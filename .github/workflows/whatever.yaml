@@ -23,8 +23,8 @@ jobs:
           set -x
           docker build --tag academiaonline/simplilearn-phpinfo:testing .
           docker run --detach --name test academiaonline/simplilearn-phpinfo:testing
-	  while true
-	    do
-	      sleep 10
-	      docker logs test 2>& 1 | grep started && break
-	    done
+          while true
+            do
+              sleep 10
+              docker logs test 2>& 1 | grep started && break
+            done

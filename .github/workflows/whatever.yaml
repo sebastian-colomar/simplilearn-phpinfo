@@ -26,5 +26,5 @@ jobs:
           while true
             do
 	      sleep 10
-	      docker logs test 2>& 1 | grep started && break
+              docker logs test 2>& 1 | grep started && break
 	    done

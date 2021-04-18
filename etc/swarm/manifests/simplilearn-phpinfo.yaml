@@ -1,0 +1,14 @@
+# docker network create phpinfo-network
+networks:
+  phpinfo-network:
+  
+#docker run --detach --name phpinfo --network phpinfo-network --restart always academiaonline/simplilearn-phpinfo:latest  
+services:
+  phpinfo:
+    deploy:
+      restart_policy:
+        condition: any
+    image: academiaonline/simplilearn-phpinfo:latest
+    networks:
+      - phpinfo-network
+version: '3.8'

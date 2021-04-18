@@ -2,7 +2,7 @@
 networks:
   phpinfo-network:
     
-# docker run --detach --name phpinfo --network phpinfo-network --restart always academiaonline/simplilearn-phpinfo:latest
+# docker run --detach --name phpinfo --network phpinfo-network --publish 80:8080 --restart always academiaonline/simplilearn-phpinfo:latest
 services:
   phpinfo:
     deploy:
@@ -11,5 +11,7 @@ services:
     image: academiaonline/simplilearn-phpinfo:latest
     networks:
       - phpinfo-network
+    ports:
+      - 80:8080
       
 version: '3.8'     

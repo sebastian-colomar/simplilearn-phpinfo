@@ -6,6 +6,9 @@ networks:
 services:
   phpinfo:
     deploy:
+      placement:
+        constraints:
+        - node.role == worker
       restart_policy:
         condition: any
     image: academiaonline/simplilearn-phpinfo:latest

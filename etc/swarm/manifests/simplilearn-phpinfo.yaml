@@ -10,7 +10,7 @@ services:
       placement:
         constraints:
         - node.role == worker
-#      replicas: 1
+      replicas: 2
 #      restart_policy:
 #        condition: any
     image: academiaonline/simplilearn-phpinfo:latest

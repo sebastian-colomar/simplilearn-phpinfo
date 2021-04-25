@@ -8,6 +8,5 @@ spec:
       port: 8080
       protocol: TCP
   selector:
-    matchLabels:
-      phpinfo: "true"
+    phpinfo: "true"
   type: ClusterIP

@@ -1,18 +1,14 @@
-# docker network create phpinfo-network
 networks:
   phpinfo-network:
     
-# docker run --detach --name phpinfo --network phpinfo-network --publish 80:8080 --restart always academiaonline/simplilearn-phpinfo:latest
 services:
   phpinfo:
     deploy:
-#      mode: replicated
+      mode: replicated
       placement:
         constraints:
         - node.role == worker
       replicas: 2
-#      restart_policy:
-#        condition: any
     image: academiaonline/simplilearn-phpinfo:latest
     networks:
       - phpinfo-network

@@ -14,7 +14,7 @@ jobs:
       - name: history
         run: docker image history index.docker.io/academiaonline/simplilearn-phpinfo:test
       - name: run
-        run: docker container run --detach --entrypoint php --name php-test --rm --workdir /src index.docker.io/academiaonline/simplilearn-phpinfo:test -f index.php -S 0.0.0.0:8080
+        run: docker container run --detach --entrypoint php --name php-test --workdir /src index.docker.io/academiaonline/simplilearn-phpinfo:test -f index.php -S 0.0.0.0:8080
       - name: top
         run: while true ; do sleep 10 && docker container top php-test 2>& 1 | grep 'php -f index.php -S 0.0.0.0:8080' && break ; done
       - name: logs

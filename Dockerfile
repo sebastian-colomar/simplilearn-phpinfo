@@ -13,6 +13,8 @@ ENV JAVA_HOME /opt/java
 # In case you prefere to mount a volume instead
 VOLUME /src
 
+USER nobody
+
 # In case you want to define the default working directory
 WORKDIR /src
 

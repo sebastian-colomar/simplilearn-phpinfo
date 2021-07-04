@@ -17,3 +17,6 @@ ENTRYPOINT ["/usr/bin/php"]
 
 # Default Arguments for the Entrypoint
 CMD ["-f","index.php","-S","0.0.0.0:8080"]
+
+# In case you want to explicitly expose that port
+EXPOSE 8080

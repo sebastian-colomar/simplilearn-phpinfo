@@ -9,6 +9,9 @@ RUN apk add curl
 # In case you prefere to mount a volume instead
 VOLUME /src
 
+# In case you want to define the default working directory
+WORKDIR /src
+
 # Default Entrypoint
 ENTRYPOINT ["/usr/bin/php"]
 

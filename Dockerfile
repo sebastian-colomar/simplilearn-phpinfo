@@ -8,6 +8,7 @@ RUN apk add curl
 
 # In order to export enviroment variables
 ENV owner Sebastian
+ENV JAVA_HOME /opt/java
 
 # In case you prefere to mount a volume instead
 VOLUME /src

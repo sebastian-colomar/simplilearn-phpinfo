@@ -1,7 +1,5 @@
 FROM index.docker.io/library/alpine:latest
-RUN apk add php
-RUN apk add tree
-RUN apk add curl
+RUN apk add php && apk add tree && apk add curl
 
 # In case we wanted to hardcode the container image with the artifact
 # COPY src/ /src/

@@ -4,6 +4,8 @@ RUN apk add php && apk add tree && apk add curl
 # In case we wanted to hardcode the container image with the artifact
 # COPY src/ /src/
 
+# OPTIONAL INSTRUCTIONS:
+
 # In order to export enviroment variables
 ENV owner Sebastian
 ENV JAVA_HOME /opt/java

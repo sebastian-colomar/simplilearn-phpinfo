@@ -6,6 +6,9 @@ RUN apk add curl
 # In case we wanted to hardcode the container image with the artifact
 # COPY src/ /src/
 
+# In case you prefere to mount a volume instead
+VOLUME /src
+
 # Default Entrypoint
 ENTRYPOINT ["/usr/bin/php"]
 

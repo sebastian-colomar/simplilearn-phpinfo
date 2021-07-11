@@ -1,0 +1,29 @@
+# docker container run --detach --entrypoint /usr/bin/php --env OWNER=Sebastian --name simplilearn-phpinfo --network simplilearn-phpinfo-network --publish 80:8080 --restart always --user nobody --volume ${PWD}/src:/src:ro --workdir /src simplilearn-phpinfo:labs -f index.php -S 0.0.0.0:8080
+
+networks:
+  simplilearn-phpinfo-network:
+    internal: false
+services:
+  simplilearn-phpinfo:
+    command:
+      - -f
+      - index.php
+      - -S
+      - 0.0.0.0:8080
+    deploy:
+      mode: replicated
+      placement:
+        constraints:
+          - node.role == worker
+        replicas: 2
+    entrypoint: /usr/bin/php
+    env:
+      - OWNER=Sebastian
+    ports:
+      - 80:8080
+    user: nobody
+    volumes:
+      - /opt/src:/src:ro
+    working_dir: /src
+    image: simplilearn-phpinfo:labs
+version: '3.8'    

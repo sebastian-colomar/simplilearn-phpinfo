@@ -19,7 +19,7 @@ services:
     entrypoint: /usr/bin/php
     environment:
       OWNER: Sebastian
-    image: simplilearn-phpinfo:labs
+    image: academiaonline/simplilearn-phpinfo-2021-07:1.0
     ports:
       - 80:8080
     user: nobody

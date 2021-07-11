@@ -15,7 +15,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-        replicas: 2
+      replicas: 2
     entrypoint: /usr/bin/php
     environment:
       OWNER: Sebastian

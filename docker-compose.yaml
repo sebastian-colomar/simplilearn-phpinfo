@@ -17,8 +17,8 @@ services:
           - node.role == worker
         replicas: 2
     entrypoint: /usr/bin/php
-    env:
-      - OWNER=Sebastian
+    environment:
+      OWNER: Sebastian
     image: simplilearn-phpinfo:labs
     ports:
       - 80:8080

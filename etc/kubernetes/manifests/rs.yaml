@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: simplilearn-phpinfo-rs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simplilearn-phpinfo-2021-07
+  template:
+    metadata:
+      labels:
+        app: simplilearn-phpinfo-2021-07
+    spec:
+      containers:
+        -
+          args:
+            - -f
+            - index.php
+            - -S
+            - 0.0.0.0:8080
+          command:
+            - /usr/bin/php
+          env:
+            - 
+              name: OWNER
+              value: Sebastian
+          image: academiaonline/simplilearn-phpinfo-2021-07:1.0
+          name: simplilearn-phpinfo-container
+          securityContext:
+            runAsUser: 65534
+          workingDir: /src

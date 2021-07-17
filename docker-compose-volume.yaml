@@ -33,11 +33,10 @@ services:
     working_dir: /src/
   volume-init:
     deploy:
-      mode: replicated
+      mode: global
       placement:
         constraints:
           - node.role == worker
-      replicas: 2
     entrypoint: 'git clone https://github.com/academiaonline/simplilearn-phpinfo /src/ ; git checkout 2021-07 ; while true ; do sleep 10 ; git pull ; done ' 
     image: alpine/git:latest
     user: nobody

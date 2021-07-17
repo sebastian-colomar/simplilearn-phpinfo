@@ -25,8 +25,29 @@ spec:
             - 
               name: OWNER
               value: Sebastian
-          image: academiaonline/simplilearn-phpinfo-2021-07:1.0
+          image: academiaonline/simplilearn-phpinfo:1.1
           name: simplilearn-phpinfo-container
           securityContext:
             runAsUser: 65534
-          workingDir: /src
+          volumeMount:
+            -
+              mountPath: /shared-volume/
+              name: src
+              readOnly: true
+          workingDir: /shared-volume/simplilearn-phpinfo/src/
+      initContainers:
+        -
+          command:
+            - 'git clone https://github.com/academiaonline/simplilearn-phpinfo ; cd simplilearn-phpinfo/ ; git checkout 2021-07'
+          image: alpine/git:latest
+          name: simplilearn-phpinfo-init-container
+          volumeMount:
+            -
+              mountPath: /shared-volume/
+              name: src
+              readOnly: false
+          workingDir: /shared-volume/
+      volumes:
+        - 
+          emptyDir: {}
+          name: src

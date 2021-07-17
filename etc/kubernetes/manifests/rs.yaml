@@ -29,7 +29,7 @@ spec:
           name: simplilearn-phpinfo-container
           securityContext:
             runAsUser: 65534
-          volumeMount:
+          volumeMounts:
             -
               mountPath: /shared-volume/
               name: src

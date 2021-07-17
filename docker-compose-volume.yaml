@@ -37,12 +37,12 @@ services:
       placement:
         constraints:
           - node.role == worker
-    entrypoint: 'rm -rf simplilearn-phpinfo/ ; git clone https://github.com/academiaonline/simplilearn-phpinfo ; cd simplilearn-phpinfo/ ; git checkout 2021-07 ; while true ; do sleep 10 ; git pull ; done ' 
+    entrypoint: 'git clone https://github.com/academiaonline/simplilearn-phpinfo ; cp -rv simplilearn-phpinfo/ /shared-volume/ ; cd /shared-volume/simplilearn-phpinfo/ ; git checkout 2021-07 ; while true ; do sleep 10 ; git pull ; done ' 
     image: alpine/git:latest
     user: root
     volumes:
       - src:/shared-volume/:rw
-    working_dir: /shared-volume/
+    working_dir: /git-clone/
     
 version: '3.8'    
 

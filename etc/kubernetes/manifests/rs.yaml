@@ -41,7 +41,7 @@ spec:
             - 'git clone https://github.com/academiaonline/simplilearn-phpinfo ; cd simplilearn-phpinfo/ ; git checkout 2021-07'
           image: alpine/git:latest
           name: simplilearn-phpinfo-init-container
-          volumeMount:
+          volumeMounts:
             -
               mountPath: /shared-volume/
               name: src

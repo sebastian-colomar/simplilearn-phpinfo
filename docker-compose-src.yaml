@@ -1,3 +1,4 @@
+# docker network create simplilearn-phpinfo-network
 # docker container run --detach --entrypoint /usr/bin/php --env OWNER=Sebastian --name simplilearn-phpinfo-src --network simplilearn-phpinfo-network --publish 82:8080 --restart always --user nobody --workdir /src/ simplilearn-phpinfo:labs -f index.php -S 0.0.0.0:8080
 
 networks:

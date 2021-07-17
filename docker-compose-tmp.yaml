@@ -33,4 +33,4 @@ services:
     
 version: '3.8'    
 
-# docker stack deploy --compose-file docker-compose.yaml SIMPLILEARN-PHPINFO
+# docker stack deploy --compose-file docker-compose-tmp.yaml SIMPLILEARN-PHPINFO-TMP

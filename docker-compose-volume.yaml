@@ -39,7 +39,7 @@ services:
           - node.role == worker
     entrypoint: 'git clone https://github.com/academiaonline/simplilearn-phpinfo /src/ ; git checkout 2021-07 ; while true ; do sleep 10 ; git pull ; done ' 
     image: alpine/git:latest
-    user: nobody
+    user: root
     volumes:
       - src:/src/:rw
     working_dir: /src/

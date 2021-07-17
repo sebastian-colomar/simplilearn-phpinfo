@@ -29,20 +29,20 @@ services:
       - 83:8080
     user: nobody
     volumes:
-      - src:/src/:ro
-    working_dir: /src/
+      - src:/shared-volume/:ro
+    working_dir: /shared-volume/simplilearn-phpinfo/src/
   volume-init:
     deploy:
       mode: global
       placement:
         constraints:
           - node.role == worker
-    entrypoint: 'git clone https://github.com/academiaonline/simplilearn-phpinfo /src/ ; git checkout 2021-07 ; while true ; do sleep 10 ; git pull ; done ' 
+    entrypoint: 'rm -rf simplilearn-phpinfo/ ; git clone https://github.com/academiaonline/simplilearn-phpinfo ; cd simplilearn-phpinfo/ ; git checkout 2021-07 ; while true ; do sleep 10 ; git pull ; done ' 
     image: alpine/git:latest
     user: root
     volumes:
-      - src:/src/:rw
-    working_dir: /src/
+      - src:/shared-volume/:rw
+    working_dir: /shared-volume/
     
 version: '3.8'    
 

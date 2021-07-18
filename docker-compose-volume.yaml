@@ -30,10 +30,10 @@ services:
     user: nobody
     volumes:
       - src:/shared-volume/:ro
-    working_dir: /shared-volume/src/
+    working_dir: /shared-volume/simplilearn-phpinfo/src/
   volume-init:
     command:
-      - 'rm -rf * && rm -rf .git* && git init && git remote add origin https://github.com/academiaonline/simplilearn-phpinfo && git pull origin 2021-07 && sleep 1000' 
+      - 'rm -rf simplilearn-phpinfo/ && git clone https://github.com/academiaonline/simplilearn-phpinfo && cd simplilearn-phpinfo/ && git checkout 2021-07 && sleep 1000' 
     deploy:
       mode: global
       placement:

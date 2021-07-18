@@ -29,11 +29,11 @@ services:
       - 83:8080
     user: nobody
     volumes:
-      - src:/shared-volume/:ro
-    working_dir: /shared-volume/simplilearn-phpinfo/src/
+      - src:/src/:ro
+    working_dir: /src/
   volume-init:
     command:
-      - 'git clone https://github.com/academiaonline/simplilearn-phpinfo && cd simplilearn-phpinfo/ && git checkout 2021-07' 
+      - 'git init . && git remote add origin https://github.com/academiaonline/simplilearn-phpinfo && git pull origin 2021-07' 
     deploy:
       mode: global
       placement:
@@ -43,10 +43,10 @@ services:
       - sh
       - '-c'
     image: alpine/git:latest
-    user: root
+    user: nobody
     volumes:
-      - src:/shared-volume/:rw
-    working_dir: /shared-volume/
+      - src:/tmp/src/:rw
+    working_dir: /tmp/src/
     
 version: '3.8'    
 

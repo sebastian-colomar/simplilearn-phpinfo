@@ -32,12 +32,16 @@ services:
       - src:/shared-volume/:ro
     working_dir: /shared-volume/simplilearn-phpinfo/src/
   volume-init:
+    command:
+      - 'git clone https://github.com/academiaonline/simplilearn-phpinfo && cd simplilearn-phpinfo/ && git checkout 2021-07' 
     deploy:
       mode: global
       placement:
         constraints:
           - node.role == worker
-    entrypoint: 'git clone https://github.com/academiaonline/simplilearn-phpinfo ; cp -rv simplilearn-phpinfo/ /shared-volume/ ; cd /shared-volume/simplilearn-phpinfo/ ; git checkout 2021-07 ; while true ; do sleep 10 ; git pull ; done ' 
+    entrypoint: 
+      - sh
+      - '-c'
     image: alpine/git:latest
     user: root
     volumes:

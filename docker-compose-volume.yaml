@@ -33,7 +33,7 @@ services:
     working_dir: /src/
   volume-init:
     command:
-      - 'git init . && git remote add origin https://github.com/academiaonline/simplilearn-phpinfo && git pull origin 2021-07' 
+      - 'git init . && git remote add origin https://github.com/academiaonline/simplilearn-phpinfo && while true ; do sleep 10 && git pull origin 2021-07 ; done' 
     deploy:
       mode: global
       placement:

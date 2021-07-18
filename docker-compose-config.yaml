@@ -27,7 +27,7 @@ services:
     networks:
       - simplilearn-phpinfo-network
     ports:
-      - 84:8080
+      - 85:8080
     configs:
       -
         gid: '65534'

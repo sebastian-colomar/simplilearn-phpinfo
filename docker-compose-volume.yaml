@@ -46,7 +46,7 @@ services:
     user: root
     volumes:
       - src:/shared-volume/:rw
-    working_dir: /git-clone/
+    working_dir: /shared-volume/
     
 version: '3.8'    
 

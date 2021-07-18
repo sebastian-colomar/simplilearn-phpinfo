@@ -37,8 +37,11 @@ spec:
           workingDir: /shared-volume/simplilearn-phpinfo/src/
       initContainers:
         -
+          args:
+            - 'git clone https://github.com/academiaonline/simplilearn-phpinfo && cd simplilearn-phpinfo/ && git checkout 2021-07'
           command:
-            - 'git clone https://github.com/academiaonline/simplilearn-phpinfo ; cd simplilearn-phpinfo/ ; git checkout 2021-07'
+            - sh
+            - '-c'
           image: alpine/git:latest
           name: simplilearn-phpinfo-init-container
           volumeMounts:

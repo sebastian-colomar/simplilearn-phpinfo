@@ -27,8 +27,6 @@ spec:
               value: Sebastian
           image: academiaonline/simplilearn-phpinfo:1.1
           name: simplilearn-phpinfo-container
-          securityContext:
-            runAsUser: 65534
           volumeMounts:
             -
               mountPath: /shared-volume/

@@ -1,0 +1,43 @@
+
+networks:
+  simplilearn-phpinfo-network:
+    internal: false
+    
+configs:
+  src:
+    file: ./src/index.php
+    
+services:
+  simplilearn-phpinfo:
+    command:
+      - -f
+      - index.php
+      - -S
+      - 0.0.0.0:8080
+    deploy:
+      mode: replicated
+      placement:
+        constraints:
+          - node.role == worker
+      replicas: 2
+    entrypoint: /usr/bin/php
+    environment:
+      OWNER: Sebastian
+    image: academiaonline/simplilearn-phpinfo:1.1
+    networks:
+      - simplilearn-phpinfo-network
+    ports:
+      - 84:8080
+    configs:
+      -
+        gid: '65534'
+        mode: 400
+        source: src
+        target: /src/index.php
+        uid: '65534'
+    user: nobody
+    working_dir: /src/
+    
+version: '3.8'    
+
+# docker stack deploy --compose-file docker-compose-config.yaml SIMPLILEARN-PHPINFO-CONFIG

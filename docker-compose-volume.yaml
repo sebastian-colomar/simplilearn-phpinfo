@@ -1,0 +1,56 @@
+# docker network create simplilearn-phpinfo-network
+# docker volume create src
+# docker container run --detach --entrypoint /usr/bin/php --env OWNER=Sebastian --name simplilearn-phpinfo-src --network simplilearn-phpinfo-network --publish 83:8080 --restart always --user nobody --volume src:/src/:ro --workdir /src/ simplilearn-phpinfo:labs -f index.php -S 0.0.0.0:8080
+
+networks:
+  simplilearn-phpinfo-network:
+    internal: false
+    
+services:
+  simplilearn-phpinfo:
+    command:
+      - -f
+      - index.php
+      - -S
+      - 0.0.0.0:8080
+    deploy:
+      mode: replicated
+      placement:
+        constraints:
+          - node.role == worker
+      replicas: 2
+    entrypoint: /usr/bin/php
+    environment:
+      OWNER: Sebastian
+    image: academiaonline/simplilearn-phpinfo:1.1
+    networks:
+      - simplilearn-phpinfo-network
+    ports:
+      - 83:8080
+    user: nobody
+    volumes:
+      - src:/shared-volume/:ro
+    working_dir: /shared-volume/simplilearn-phpinfo/src/
+  volume-init:
+    command:
+      - 'rm -rf simplilearn-phpinfo/ && git clone https://github.com/academiaonline/simplilearn-phpinfo && cd simplilearn-phpinfo/ && git checkout 2021-07 && sleep 1000' 
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role == worker
+    entrypoint: 
+      - sh
+      - '-c'
+    image: alpine/git:latest
+    user: root
+    volumes:
+      - src:/shared-volume/:rw
+    working_dir: /shared-volume/
+    
+version: '3.8'    
+
+volumes:
+  src:
+
+# docker stack deploy --compose-file docker-compose-volume.yaml SIMPLILEARN-PHPINFO-VOLUME

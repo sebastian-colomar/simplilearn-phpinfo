@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: simplilearn-phpinfo-rs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simplilearn-phpinfo-2021-07
+  template:
+    metadata:
+      labels:
+        app: simplilearn-phpinfo-2021-07
+    spec:
+      containers:
+        -
+          args:
+            - -f
+            - index.php
+            - -S
+            - 0.0.0.0:8080
+          command:
+            - /usr/bin/php
+          env:
+            - 
+              name: OWNER
+              value: Sebastian
+          image: academiaonline/simplilearn-phpinfo:1.1
+          name: simplilearn-phpinfo-container
+          volumeMounts:
+            -
+              mountPath: /shared-volume/
+              name: src
+              readOnly: true
+          workingDir: /shared-volume/simplilearn-phpinfo/src/
+      initContainers:
+        -
+          args:
+            - 'git clone https://github.com/academiaonline/simplilearn-phpinfo && cd simplilearn-phpinfo/ && git checkout 2021-07'
+          command:
+            - sh
+            - '-c'
+          image: alpine/git:latest
+          name: simplilearn-phpinfo-init-container
+          volumeMounts:
+            -
+              mountPath: /shared-volume/
+              name: src
+              readOnly: false
+          workingDir: /shared-volume/
+      volumes:
+        - 
+          emptyDir: {}
+          name: src

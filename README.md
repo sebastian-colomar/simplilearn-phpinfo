@@ -1,4 +1,4 @@
-GITHUB_USERNAME=academiaonline
+GITHUB_USERNAME=binoy2
 GITHUB_PROJECT=simplilearn-phpinfo
 GITHUB_BRANCH=2021-08
 

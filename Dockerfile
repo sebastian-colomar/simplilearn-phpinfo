@@ -8,4 +8,4 @@ FROM library/alpine:latest
 # apk add = apt install
 # docker container exec alpine-shell /sbin/apk add curl
 # docker container exec alpine-shell /sbin/apk add php
-RUN apk add curl && apk add php
+RUN apk add curl && apk add php && useradd nobody2

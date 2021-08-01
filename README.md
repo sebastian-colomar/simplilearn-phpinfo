@@ -13,3 +13,8 @@ docker container run --cpus 0.050 --detach --entrypoint /usr/bin/php --memory 10
 docker container logs ${GITHUB_PROJECT}_single 
 docker container top ${GITHUB_PROJECT}_single 
 docker container stats --no-stream ${GITHUB_PROJECT}_single 
+
+
+docker image build --file Dockerfile-no-volume --tag ${GITHUB_USERNAME}/${GITHUB_PROJECT}:no-volume ./
+docker container run --cpus 0.050 --detach --entrypoint /usr/bin/php --memory 10M --name ${GITHUB_PROJECT}_no-volume --publish 81:8080 --read-only --rm --user nobody --workdir /src/ ${GITHUB_USERNAME}/${GITHUB_PROJECT}:single -f index.php -S 0.0.0.0:8080
+

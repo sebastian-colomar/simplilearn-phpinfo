@@ -1,11 +1,3 @@
-@carlosissac
-carlosissac rename Dockerfile to single line
-…
-Latest commit 3d6403b 24 minutes ago
- History
- 1 contributor
-18 lines (15 sloc)  653 Bytes
-   
 # TO PULL DOCKER IMAGE
 # docker image pull library/apline:latest
 FROM library/alpine:latest

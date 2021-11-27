@@ -15,4 +15,6 @@ docker container run --cpus 0.050 --detach --entrypoint /usr/bin/php --memory 10
 docker container logs ${GITHUB_PROJECT}_single
 docker container top ${GITHUB_PROJECT}_single
 docker container statst --no-stream ${GITHUB_PROJECT}_single
+
+docker container kill ${GITHUB_PROJECT}_single
 ```

@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: simplilearn-phpinfo-svc
+spec:
+  ports:
+    - name: phpinfo
+      port: 80
+      targetPort: 8080
+    - name: mysql
+      port: 3306
+      targetPort: 3306
+  selector:
+    app: simplilearn-phpinfo

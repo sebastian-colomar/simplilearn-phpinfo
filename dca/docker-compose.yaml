@@ -1,0 +1,16 @@
+services:
+  phpinfo:
+    deploy:
+      mode: replicated
+      placement:
+        constraints:
+          - node.role == worker
+      replicas: 2
+    image: academiaonline/simplilearn-phpinfo:latest
+    ports:
+      - 80:8080
+    volumes:
+      - phpinfo:/data
+version: '3.8'
+volumes:
+  phpinfo:

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simplilearn-phpinfo-pod
+spec:
+  containers:
+    - name: simplilearn-phpinfo-container
+      image: academiaonline/simplilearn-phpinfo:latest
+      command:
+        - "php"
+      args: 
+        - "-f"
+        - "index.php"
+        - "-S"
+        - "0.0.0.0:8080"

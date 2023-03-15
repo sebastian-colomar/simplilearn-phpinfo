@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplilearn-phpinfo-deploy
+spec:
+  selector:
+    matchLabels:
+      app: simplilearn-phpinfo
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: simplilearn-phpinfo
+    spec:
+      containers:
+        - name: simplilearn-phpinfo-container
+          image: index.docker.io/academiaonline/simplilearn-phpinfo-2021-06:latest
+          args:
+            - -f
+            - index.php
+            - -S
+            - 0.0.0.0:8080
+          command:
+            - /usr/bin/php
+          workingDir: /src
+

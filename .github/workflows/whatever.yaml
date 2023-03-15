@@ -1,0 +1,30 @@
+################################################################################
+#      Copyright (C) 2020        Sebastian Francisco Colomar Bauza             #
+#      SPDX-License-Identifier:  GPL-2.0-only                                  #
+################################################################################
+name: whatelse
+
+on:
+  push:
+    branches:
+      - docker
+      
+jobs:
+  whichever:
+    runs-on: ubuntu-18.04
+    steps:
+      -
+        name: whichelse
+        uses: actions/checkout@v2
+      -
+        name: actual_test
+        run: |
+        
+          set -x
+          docker build --tag academiaonline/simplilearn-phpinfo:testing .
+          docker run --detach --name test academiaonline/simplilearn-phpinfo:testing
+          while true
+            do
+              sleep 10
+              docker logs test 2>& 1 | grep started && break
+            done

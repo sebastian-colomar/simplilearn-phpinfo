@@ -1,0 +1,18 @@
+networks:
+  phpinfo-network:
+    
+services:
+  phpinfo:
+    deploy:
+      mode: replicated
+      placement:
+        constraints:
+        - node.role == worker
+      replicas: 2
+    image: academiaonline/simplilearn-phpinfo:latest
+    networks:
+      - phpinfo-network
+    ports:
+      - 80:8080
+      
+version: '3.8'     

@@ -1,0 +1,8 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: simplilearn-phpinfo-route
+spec:
+  to:
+    kind: Service
+    name: simplilearn-phpinfo-svc

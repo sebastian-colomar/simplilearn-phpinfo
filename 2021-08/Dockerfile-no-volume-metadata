@@ -1,0 +1,9 @@
+FROM library/alpine:latest
+RUN apk add curl && apk add php
+COPY src/ /src/
+
+CMD ["-f","index.php","-S","0.0.0.0:8080"]
+ENTRYPOINT ["/usr/bin/php"]
+EXPOSE 8080
+USER nobody
+WORKDIR /src/
